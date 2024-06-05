@@ -32,7 +32,7 @@ defmodule ContexSampleWeb.Shared do
   def colour_options(), do: simple_option_list(~w(default themed custom warm pastel nil))
   def yes_no_options(), do: simple_option_list(~w(yes no))
   def legend_options(), do: simple_option_list(~w(legend_none legend_right legend_top legend_bottom))
-  def chart_type_options(), do: simple_option_list(~w(stacked grouped))
+  def chart_type_options(), do: simple_option_list(~w(stacked stacked_absolute grouped))
   def chart_orientation_options(), do: simple_option_list(~w(vertical horizontal))
 
 
@@ -89,6 +89,7 @@ defmodule ContexSampleWeb.Shared do
   defp update_type(options, raw) do
     case raw do
       "stacked" -> Map.put(options, :type, :stacked)
+      "stacked_absolute" -> Map.put(options, :type, :stacked_absolute)
       "grouped" -> Map.put(options, :type, :grouped)
       _-> Map.put(options, :type, raw)
     end

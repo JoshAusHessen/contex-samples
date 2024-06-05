@@ -218,7 +218,11 @@ defmodule ContexSampleWeb.BarChartLive do
     data = 1..categories
     |> Enum.map(fn cat ->
       series_data = for _ <- 1..series do
-        random_within_range(10.0, 100.0)
+        if options.type == :stacked_absolute do
+          random_within_range(-10.0, 100.0)
+        else
+          random_within_range(10.0, 100.0)
+        end
       end
       ["Category #{cat}" | series_data]
     end)
